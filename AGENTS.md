@@ -1,5 +1,110 @@
-<!-- BEGIN:nextjs-agent-rules -->
-# This is NOT the Next.js you know
+# AGENTS.md
 
-This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` before writing any code. Heed deprecation notices.
-<!-- END:nextjs-agent-rules -->
+## Project Overview
+
+별일있음은 사용자가 입력한 평범한 하루를 전설, 긴급 뉴스,
+스포츠 중계, 업적 달성 등의 스타일로 과장해주는 모바일 중심 AI 웹서비스다.
+
+제품 요구사항과 MVP 범위는 `docs/product.md`를 기준으로 한다.
+
+## Project Purpose
+
+이 프로젝트는 포트폴리오 제작과 프론트엔드 개발 학습을 목적으로 한다.
+
+사용자는 중요한 코드와 기술적 결정을 직접 이해하고 설명할 수 있어야 한다.
+Codex는 프로젝트 전체를 대신 구현하는 역할이 아니라 다음 역할을 수행한다.
+
+- 코드베이스 탐색
+- 구현 전 설계 검토
+- 작은 범위의 구현 보조
+- 코드 리뷰
+- 오류 원인 분석
+- 테스트와 검증
+- 리팩터링 제안
+
+## Tech Stack
+
+- Next.js App Router
+- TypeScript
+- SCSS Modules
+- OpenAI Responses API
+- Zod
+- Vercel
+
+새로운 라이브러리는 반드시 필요한 경우에만 추가한다.
+
+## Commands
+
+- 개발 서버 실행: `npm run dev`
+- ESLint 검사: `npm run lint`
+- 프로덕션 빌드 검사: `npm run build`
+
+## Working Rules
+
+- 한 번에 프로젝트 전체를 구현하지 않는다.
+- 사용자가 요청한 범위만 작업한다.
+- 요청하지 않은 기능을 임의로 추가하지 않는다.
+- 파일을 수정하기 전에 변경할 파일과 변경 이유를 먼저 설명한다.
+- 작업 범위 밖의 파일은 수정하지 않는다.
+- 기존 구조를 크게 바꾸기 전에 변경 이유와 장단점을 설명한다.
+- 새로운 패키지를 설치하기 전에 필요성과 대안을 설명한다.
+- 불필요한 추상화와 조기 최적화를 피한다.
+- 초보 프론트엔드 개발자가 읽고 이해할 수 있는 코드를 우선한다.
+- 타입을 명확하게 작성하고 불필요한 `any` 사용을 피한다.
+- 기존 코드 스타일과 프로젝트 구조를 유지한다.
+
+## Learning Rules
+
+- 사용자가 작성한 코드를 바로 교체하지 말고 문제를 먼저 설명한다.
+- 오류가 발생하면 즉시 전체 코드를 다시 작성하지 않는다.
+- 가능한 원인을 우선순위대로 설명하고 확인 방법을 제시한다.
+- 여러 해결 방법이 있다면 각각의 장단점을 비교한다.
+- 구현 후 사용자가 반드시 이해해야 할 코드를 설명한다.
+- 복잡한 코드를 작성했다면 더 단순한 대안도 함께 검토한다.
+- 사용자가 직접 구현하려는 단계에서는 완성 코드를 먼저 제공하지 않는다.
+
+## Validation Rules
+
+- 의미 있는 코드 변경 후 `npm run lint`를 실행한다.
+- 배포나 서버 동작에 영향을 주는 변경 후 `npm run build`를 실행한다.
+- 검사에 실패하면 실패한 이유와 관련 파일을 설명한다.
+- 검사를 실행하지 못했다면 실행하지 못한 사실을 명시한다.
+- 작업 완료 후 변경한 파일 목록을 알려준다.
+
+## Security Rules
+
+- `.env`와 `.env.local` 파일의 내용을 읽거나 출력하지 않는다.
+- 환경변수 파일을 생성하거나 수정하지 않는다.
+- API 키나 비밀값을 코드에 직접 작성하지 않는다.
+- 비밀값이 Git에 포함되지 않도록 주의한다.
+- OpenAI API는 브라우저에서 직접 호출하지 않고 서버에서만 호출한다.
+
+## MVP Boundaries
+
+첫 번째 MVP에서는 다음 기능을 구현하지 않는다.
+
+- 로그인과 회원가입
+- 데이터베이스
+- 사용자 프로필
+- 결과 영구 저장
+- 결과 링크 공유
+- 공개 피드
+- 좋아요와 댓글
+- 친구 기능
+- 결제와 구독
+- 모바일 애플리케이션
+
+## Current Development Order
+
+다음 순서로 기능을 구현한다.
+
+1. 오늘 한 일 입력 폼
+2. 과장 스타일 선택
+3. Mock 데이터를 사용한 결과 화면
+4. 클라이언트와 서버의 요청·응답 타입 설계
+5. OpenAI Responses API 연동
+6. 입력값과 AI 응답 검증
+7. 결과 복사 및 이미지 저장
+8. 반응형 UI와 접근성 점검
+
+현재 단계보다 뒤에 있는 기능을 사용자의 요청 없이 먼저 구현하지 않는다.
