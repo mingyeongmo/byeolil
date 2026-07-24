@@ -46,9 +46,7 @@ export default function Home() {
 
           {activities.map((activity, index) => (
             <div key={index}>
-              <label htmlFor={`activity-${index}`}>
-                오늘 있었던 일 {index + 1}
-              </label>
+              <label htmlFor={`activity-${index}`}>오늘 있었던 일</label>
               <input
                 id={`activity-${index}`}
                 value={activity}
@@ -60,7 +58,7 @@ export default function Home() {
                 <button
                   type="button"
                   onClick={() => handleRemoveActivity(index)}
-                  aria-label={`오늘 한 일 ${index + 1} 삭제`}
+                  aria-label={`오늘 있었던 일 ${index + 1} 삭제`}
                 >
                   X
                 </button>
@@ -69,7 +67,7 @@ export default function Home() {
           ))}
 
           <button type="button" onClick={handleAddActivity}>
-            + 있었던 일 추가
+            추가
           </button>
         </form>
       </main>
