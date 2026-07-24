@@ -1,0 +1,78 @@
+.styleStep {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  margin-top: 48px;
+}
+
+.backButton {
+  align-self: flex-start;
+}
+
+.styleIntro {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.eyebrow {
+  color: #666;
+  font-size: 14px;
+}
+
+.styleOptions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.styleCard {
+  display: flex;
+  min-height: 180px;
+  flex-direction: column;
+  gap: 12px;
+  padding: 20px;
+  border: 1px solid #dedede;
+  border-radius: 16px;
+  color: #171717;
+  background: #fff;
+  text-align: left;
+  cursor: pointer;
+}
+
+.styleCard:hover {
+  border-color: #999;
+}
+
+.styleCard:focus-visible {
+  outline: 3px solid #ffc83d;
+  outline-offset: 2px;
+}
+
+.styleCardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 20px;
+}
+
+.styleCard small {
+  margin-top: auto;
+  color: #666;
+}
+
+.selectedStyle {
+  border-color: #171717;
+  background: #fff7df;
+}
+
+.selectionMessage {
+  color: #167145;
+  font-size: 14px;
+}
+
+@media (max-width: 600px) {
+  .styleOptions {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,8 @@
+.errorMessage {
+  color: #d32f2f;
+  font-size: 14px;
+}
+
+.form input[aria-invalid="true"] {
+  border-color: #d32f2f;
+}
