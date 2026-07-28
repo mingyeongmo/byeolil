@@ -1,16 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
+import Header from "./_components/Header/Header";
 import styles from "./page.module.scss";
 
 export default function Home() {
   return (
     <div className={styles.page}>
       <main className={styles.main}>
-        <header className={styles.header}>
-          <Link className={styles.brand} href="/" aria-label="별일있음 홈">
-            <span>별일있음</span>
-          </Link>
-        </header>
+        <Header />
         <section className={styles.hero}>
           <h1>
             별일 없던 하루도

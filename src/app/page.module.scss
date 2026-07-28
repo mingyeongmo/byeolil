@@ -14,26 +14,9 @@
   width: 100%;
   max-width: 500px;
   min-height: 100dvh;
-  padding: 28px 24px 36px;
+  padding: 0px 24px 36px;
   background: #fff;
   border-inline: 1px solid #f0ebe9;
-}
-
-.header {
-  display: flex;
-  align-items: center;
-  min-height: 44px;
-}
-
-.brand {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  color: var(--text);
-  font-size: 22px;
-  font-weight: 800;
-  letter-spacing: -0.04em;
-  text-decoration: none;
 }
 
 .brandMark {
