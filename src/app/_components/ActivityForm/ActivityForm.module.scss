@@ -1,8 +1,253 @@
-.errorMessage {
-  color: #d32f2f;
-  font-size: 14px;
+.activityStep {
+  margin-top: 46px;
+}
+
+.intro {
+  position: relative;
+}
+
+.intro::after {
+  position: absolute;
+  top: 18px;
+  right: 4px;
+  color: var(--color-primary);
+  content: "✦";
+  font-size: 34px;
+  transform: rotate(12deg);
+}
+
+.eyebrow {
+  display: inline-block;
+  padding: 7px 11px;
+  border-radius: 999px;
+  color: var(--color-primary-dark);
+  background: var(--color-primary-light);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+
+.intro h2 {
+  margin-top: 18px;
+  font-size: clamp(32px, 8vw, 40px);
+  line-height: 1.2;
+  letter-spacing: -0.055em;
+}
+
+.intro p {
+  margin-top: 14px;
+  color: #706b69;
+  font-size: 15px;
+  line-height: 1.65;
+  letter-spacing: -0.025em;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 34px;
+  margin-top: 42px;
+}
+
+.nameField,
+.activitiesField {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  border: 0;
+}
+
+.nameField label,
+.activitiesField legend {
+  color: var(--text);
+  font-size: 17px;
+  font-weight: 800;
+  letter-spacing: -0.035em;
+}
+
+.form input {
+  width: 100%;
+  min-height: 54px;
+  padding: 0 16px;
+  border: 1px solid #e4dedb;
+  border-radius: 14px;
+  color: var(--text);
+  background: #fff;
+  font: inherit;
+  font-size: 15px;
+  transition:
+    border-color 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.nameField input {
+  margin-top: 12px;
+}
+
+.form input::placeholder {
+  color: #aaa3a0;
 }
 
 .form input[aria-invalid="true"] {
-  border-color: #d32f2f;
+  border-color: #d64b42;
+}
+
+.form input:focus-visible {
+  border-color: var(--color-primary);
+  outline: 0;
+  box-shadow: 0 0 0 4px var(--color-primary-light);
+}
+
+.fieldHint {
+  margin-top: 7px;
+  color: #8a8380;
+  font-size: 13px;
+}
+
+.activityList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.activityItem {
+  position: relative;
+  padding: 15px;
+  border: 1px solid #eee8e5;
+  border-radius: 16px;
+  background: #fffaf7;
+}
+
+.activityItem label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-right: 28px;
+  color: #5d5653;
+  font-size: 13px;
+  font-weight: 750;
+}
+
+.activityItem label span {
+  display: grid;
+  width: 22px;
+  height: 22px;
+  place-items: center;
+  border-radius: 50%;
+  color: #fff;
+  background: var(--color-primary);
+  font-size: 11px;
+}
+
+.activityItem input {
+  margin-top: 11px;
+  background: #fff;
+}
+
+.removeButton {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  display: grid;
+  width: 28px;
+  height: 28px;
+  place-items: center;
+  border: 0;
+  border-radius: 50%;
+  color: #8b817d;
+  background: transparent;
+  cursor: pointer;
+  font-size: 21px;
+}
+
+.removeButton:hover {
+  color: var(--text);
+  background: #f1e9e5;
+}
+
+.addButton {
+  display: flex;
+  min-height: 50px;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  margin-top: 12px;
+  border: 1px dashed var(--color-primary-border);
+  border-radius: 14px;
+  color: var(--color-primary-dark);
+  background: #fff;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 750;
+}
+
+.addButton:hover {
+  background: var(--color-primary-light);
+}
+
+.addButton span {
+  font-size: 18px;
+}
+
+.submitButton {
+  display: flex;
+  min-height: 58px;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border: 0;
+  border-radius: 14px;
+  color: #fff;
+  background: var(--color-primary);
+  cursor: pointer;
+  font-size: 17px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  transition:
+    background-color 160ms ease,
+    transform 160ms ease;
+}
+
+.submitButton:hover {
+  background: var(--color-primary-dark);
+}
+
+.submitButton:active {
+  transform: translateY(1px);
+}
+
+.submitButton span {
+  font-size: 20px;
+}
+
+.removeButton:focus-visible,
+.addButton:focus-visible,
+.submitButton:focus-visible {
+  outline: 3px solid var(--text);
+  outline-offset: 3px;
+}
+
+.errorMessage {
+  margin-top: 7px;
+  color: #d64b42;
+  font-size: 12px;
+}
+
+.bottomHint {
+  margin-top: 13px;
+  color: #958d89;
+  font-size: 12px;
+  text-align: center;
+}
+
+@media (max-width: 420px) {
+  .activityStep {
+    margin-top: 38px;
+  }
+
+  .intro::after {
+    right: 0;
+    font-size: 28px;
+  }
 }

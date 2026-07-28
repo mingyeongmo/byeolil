@@ -276,26 +276,3 @@
   font-size: 23px;
   transform: rotate(-45deg);
 }
-
-@media (max-width: 420px) {
-  .main {
-    padding-inline: 20px;
-    border-inline: 0;
-  }
-
-  .hero {
-    margin-top: 38px;
-  }
-
-  .resultDetails {
-    grid-template-columns: 1fr;
-    gap: 16px;
-  }
-
-  .resultDetails div + div {
-    padding-top: 16px;
-    padding-left: 0;
-    border-top: 1px solid var(--line);
-    border-left: 0;
-  }
-}

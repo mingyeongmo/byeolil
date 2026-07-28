@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import ActivityForm from "../_components/ActivityForm/ActivityForm";
+import Header from "../_components/Header/Header";
 import StyleSelector, {
   type ExaggerationStyle,
 } from "../_components/StyleSelector/StyleSelector";
@@ -27,10 +28,7 @@ export default function CreatePage() {
   return (
     <div className={styles.page}>
       <main className={styles.main}>
-        <header className={styles.header}>
-          <h1>별일있음</h1>
-          <span>{currentStep === "input" ? "1 / 3" : "2 / 3"}</span>
-        </header>
+        <Header />
 
         {currentStep === "input" ? (
           <ActivityForm

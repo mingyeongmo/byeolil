@@ -7,6 +7,7 @@
 
 .backButton {
   align-self: flex-start;
+  color: var(--color-primary-dark);
 }
 
 .styleIntro {
@@ -41,11 +42,11 @@
 }
 
 .styleCard:hover {
-  border-color: #999;
+  border-color: var(--color-primary);
 }
 
 .styleCard:focus-visible {
-  outline: 3px solid #ffc83d;
+  outline: 3px solid var(--color-primary-border);
   outline-offset: 2px;
 }
 
@@ -62,8 +63,14 @@
 }
 
 .selectedStyle {
-  border-color: #171717;
-  background: #fff7df;
+  border-color: var(--color-primary);
+  background: var(--color-primary-light);
+}
+
+.styleStep > button:last-child {
+  color: #fff;
+  border-color: var(--color-primary);
+  background: var(--color-primary);
 }
 
 .selectionMessage {

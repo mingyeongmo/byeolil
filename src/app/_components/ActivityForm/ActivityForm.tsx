@@ -105,73 +105,112 @@ export default function ActivityForm({
   };
 
   return (
-    <>
-      <p>별일 없던 오늘도, 쓸데 없이 거창하게.</p>
-      <p>오늘 있었던 일을 들려주세요.</p>
+    <section className={styles.activityStep}>
+      <div className={styles.intro}>
+        <span className={styles.eyebrow}>STEP 1 · 오늘의 기록</span>
+        <h2>
+          오늘 무슨 일이
+          <br />
+          있었나요?
+        </h2>
+        <p>
+          대단한 일이 아니어도 괜찮아요.
+          <br />
+          사소할수록 더 거창하게 만들어 드릴게요.
+        </p>
+      </div>
 
       <form className={styles.form} onSubmit={handleSubmit} noValidate>
-        <label htmlFor="name">이름</label>
-        <input
-          id="name"
-          type="text"
-          value={name}
-          onChange={(event) => handleNameChange(event.target.value)}
-          placeholder="이름을 입력해 주세요"
-          maxLength={20}
-          aria-invalid={Boolean(errors.name)}
-          aria-describedby={errors.name ? "name-error" : undefined}
-        />
-        {errors.name && (
-          <p id="name-error" className={styles.errorMessage}>
-            {errors.name}
-          </p>
-        )}
+        <div className={styles.nameField}>
+          <label htmlFor="name">어떻게 불러드릴까요?</label>
+          <input
+            id="name"
+            type="text"
+            value={name}
+            onChange={(event) => handleNameChange(event.target.value)}
+            placeholder="이름 또는 별명"
+            maxLength={20}
+            aria-invalid={Boolean(errors.name)}
+            aria-describedby={errors.name ? "name-error" : undefined}
+          />
+          {errors.name && (
+            <p id="name-error" className={styles.errorMessage}>
+              {errors.name}
+            </p>
+          )}
+        </div>
 
-        {activities.map((activity, index) => (
-          <div key={index}>
-            <label htmlFor={`activity-${index}`}>오늘 있었던 일</label>
-            <input
-              id={`activity-${index}`}
-              value={activity}
-              placeholder="예 : 점심으로 김치찌개를 먹었다"
-              maxLength={50}
-              onChange={(event) =>
-                handleActivityChange(index, event.target.value)
-              }
-              aria-invalid={Boolean(errors.activities[index])}
-              aria-describedby={
-                errors.activities[index]
-                  ? `activity-${index}-error`
-                  : undefined
-              }
-            />
-            {errors.activities[index] && (
-              <p
-                id={`activity-${index}-error`}
-                className={styles.errorMessage}
-              >
-                {errors.activities[index]}
-              </p>
-            )}
-            {activities.length > MIN_ACTIVITIES && (
-              <button
-                type="button"
-                onClick={() => handleRemoveActivity(index)}
-                aria-label={`오늘 있었던 일 ${index + 1} 삭제`}
-              >
-                X
-              </button>
-            )}
+        <fieldset className={styles.activitiesField}>
+          <legend>오늘 있었던 일을 적어주세요</legend>
+          <p className={styles.fieldHint}>짧은 문장으로 편하게 적으면 돼요.</p>
+
+          <div className={styles.activityList}>
+            {activities.map((activity, index) => (
+              <div className={styles.activityItem} key={index}>
+                <label htmlFor={`activity-${index}`}>
+                  <span>{index + 1}</span>
+                  오늘의 일
+                </label>
+                <input
+                  id={`activity-${index}`}
+                  value={activity}
+                  placeholder={
+                    index === 0
+                      ? "예: 점심으로 김치찌개를 먹었다"
+                      : "오늘 있었던 일을 입력해 주세요"
+                  }
+                  maxLength={50}
+                  onChange={(event) =>
+                    handleActivityChange(index, event.target.value)
+                  }
+                  aria-invalid={Boolean(errors.activities[index])}
+                  aria-describedby={
+                    errors.activities[index]
+                      ? `activity-${index}-error`
+                      : undefined
+                  }
+                />
+                {errors.activities[index] && (
+                  <p
+                    id={`activity-${index}-error`}
+                    className={styles.errorMessage}
+                  >
+                    {errors.activities[index]}
+                  </p>
+                )}
+                {activities.length > MIN_ACTIVITIES && (
+                  <button
+                    className={styles.removeButton}
+                    type="button"
+                    onClick={() => handleRemoveActivity(index)}
+                    aria-label={`오늘 있었던 일 ${index + 1} 삭제`}
+                  >
+                    ×
+                  </button>
+                )}
+              </div>
+            ))}
           </div>
-        ))}
 
-        <button type="button" onClick={handleAddActivity}>
-          추가
+          <button
+            className={styles.addButton}
+            type="button"
+            onClick={handleAddActivity}
+          >
+            <span aria-hidden="true">＋</span>
+            오늘의 일 더 추가하기
+          </button>
+        </fieldset>
+
+        <button className={styles.submitButton} type="submit">
+          과장 스타일 고르기
+          <span aria-hidden="true">→</span>
         </button>
-        <button type="submit">과장 스타일 고르러 가기</button>
       </form>
 
-      <p>오늘 있었던 일 3개 정도만 말</p>
-    </>
+      <p className={styles.bottomHint}>
+        입력한 내용은 결과를 만드는 데만 사용해요.
+      </p>
+    </section>
   );
 }
