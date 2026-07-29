@@ -1,3 +1,4 @@
+import { MOCK_RESULTS } from "@/mocks/generatedResults";
 import { GenerateRequestSchema } from "@/schema/generate";
 
 export async function POST(request: Request) {
@@ -18,9 +19,11 @@ export async function POST(request: Request) {
       );
     }
 
+    const result = MOCK_RESULTS[parsedData.data.style];
+
     return Response.json({
       success: true,
-      received: parsedData.data,
+      result,
     });
   } catch {
     return Response.json(

@@ -21,3 +21,12 @@ export const GenerateRequestSchema = z.object({
 });
 
 export type GenerateRequest = z.infer<typeof GenerateRequestSchema>;
+
+export const GeneratedResultSchema = z.object({
+  title: z.string(),
+  body: z.string(),
+  todayTitle: z.string(),
+  oneLineReview: z.string(),
+});
+
+export type GeneratedResult = z.infer<typeof GeneratedResultSchema>;
