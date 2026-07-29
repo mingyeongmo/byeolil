@@ -6,16 +6,6 @@
   position: relative;
 }
 
-.intro::after {
-  position: absolute;
-  top: 18px;
-  right: 4px;
-  color: var(--color-primary);
-  content: "✦";
-  font-size: 34px;
-  transform: rotate(12deg);
-}
-
 .eyebrow {
   display: inline-block;
   padding: 7px 11px;
@@ -244,10 +234,5 @@
 @media (max-width: 420px) {
   .activityStep {
     margin-top: 38px;
-  }
-
-  .intro::after {
-    right: 0;
-    font-size: 28px;
   }
 }
