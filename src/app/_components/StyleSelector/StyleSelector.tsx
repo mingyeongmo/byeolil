@@ -40,13 +40,14 @@ type StyleSelectorProps = {
   selectedStyle: ExaggerationStyle | null;
   onSelect: (style: ExaggerationStyle) => void;
   onBack: () => void;
+  onComplete: () => void;
 };
 
 export default function StyleSelector({
-  name,
   selectedStyle,
   onSelect,
   onBack,
+  onComplete,
 }: StyleSelectorProps) {
   return (
     <section className={styles.styleStep}>
@@ -103,6 +104,7 @@ export default function StyleSelector({
         className={styles.submitButton}
         type="button"
         disabled={!selectedStyle}
+        onClick={onComplete}
       >
         내 하루 과장하기
         <span aria-hidden="true">→</span>

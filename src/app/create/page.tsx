@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import ActivityForm from "../_components/ActivityForm/ActivityForm";
 import Header from "../_components/Header/Header";
+import ActivityForm from "../_components/ActivityForm/ActivityForm";
 import StyleSelector, {
   type ExaggerationStyle,
 } from "../_components/StyleSelector/StyleSelector";
@@ -25,6 +25,28 @@ export default function CreatePage() {
     setCurrentStep("style");
   };
 
+  const handleGenerate = async () => {
+    if (!selectedStyle) {
+      return;
+    }
+
+    const response = await fetch("/api/generate", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name,
+        activities,
+        style: selectedStyle,
+      }),
+    });
+
+    const data = await response.json();
+
+    console.log("서버가 반환한 데이터 : ", data);
+  };
+
   return (
     <div className={styles.page}>
       <main className={styles.main}>
@@ -44,6 +66,7 @@ export default function CreatePage() {
             selectedStyle={selectedStyle}
             onSelect={setSelectedStyle}
             onBack={() => setCurrentStep("input")}
+            onComplete={handleGenerate}
           />
         )}
       </main>
