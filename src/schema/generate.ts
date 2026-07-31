@@ -30,3 +30,9 @@ export const GeneratedResultSchema = z.object({
 });
 
 export type GeneratedResult = z.infer<typeof GeneratedResultSchema>;
+
+export const StoredResultSchema = GenerateRequestSchema.extend({
+  result: GeneratedResultSchema,
+});
+
+export type StoredResult = z.infer<typeof StoredResultSchema>;

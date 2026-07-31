@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import Header from "../_components/Header/Header";
 import ActivityForm from "../_components/ActivityForm/ActivityForm";
 import StyleSelector, {
@@ -9,6 +10,8 @@ import StyleSelector, {
 import styles from "./page.module.scss";
 
 export default function CreatePage() {
+  const router = useRouter();
+
   const [currentStep, setCurrentStep] = useState<"input" | "style">("input");
   const [name, setName] = useState("");
   const [activities, setActivities] = useState(["", "", ""]);
@@ -44,7 +47,22 @@ export default function CreatePage() {
 
     const data = await response.json();
 
-    console.log("서버가 반환한 데이터 : ", data);
+    if (!response.ok) {
+      console.error(data.message);
+      return;
+    }
+
+    sessionStorage.setItem(
+      "byeolil-result",
+      JSON.stringify({
+        name,
+        activities,
+        style: selectedStyle,
+        result: data.result,
+      }),
+    );
+
+    router.push("/result");
   };
 
   return (
