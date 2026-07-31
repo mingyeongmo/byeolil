@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { useSyncExternalStore } from "react";
+import { useRef, useState, useSyncExternalStore } from "react";
+import { toPng } from "html-to-image";
 import { StoredResultSchema, type StoredResult } from "@/schema/generate";
 import Header from "../_components/Header/Header";
 import styles from "./page.module.scss";
@@ -11,6 +12,20 @@ const STYLE_LABELS: Record<StoredResult["style"], string> = {
   "breaking-news": "긴급 뉴스",
   sports: "스포츠 중계",
   achievement: "업적 달성",
+};
+
+const THEME_CLASSES: Partial<Record<StoredResult["style"], string>> = {
+  legend: styles.legend,
+  "breaking-news": styles.breakingNews,
+  sports: styles.sports,
+  achievement: styles.achievement,
+};
+
+const THEME_MARKS: Record<StoredResult["style"], string> = {
+  legend: "♛",
+  "breaking-news": "속보",
+  sports: "LIVE",
+  achievement: "★",
 };
 
 function subscribe() {
@@ -40,6 +55,10 @@ function parseStoredResult(rawResult: string | null): StoredResult | null {
 }
 
 export default function ResultPage() {
+  const resultCardRef = useRef<HTMLElement>(null);
+  const [isSaving, setIsSaving] = useState(false);
+  const [saveError, setSaveError] = useState("");
+
   const isClient = useSyncExternalStore(
     subscribe,
     getClientSnapshot,
@@ -65,6 +84,32 @@ export default function ResultPage() {
   const rawResult = sessionStorage.getItem("byeolil-result");
   const storedResult = parseStoredResult(rawResult);
 
+  const handleSaveImage = async () => {
+    if (!resultCardRef.current || !storedResult) {
+      return;
+    }
+
+    setIsSaving(true);
+    setSaveError("");
+
+    try {
+      const dataUrl = await toPng(resultCardRef.current, {
+        backgroundColor: "#ffffff",
+        cacheBust: true,
+        pixelRatio: 2,
+      });
+      const downloadLink = document.createElement("a");
+
+      downloadLink.download = `${storedResult.name}-별일있음.png`;
+      downloadLink.href = dataUrl;
+      downloadLink.click();
+    } catch {
+      setSaveError("이미지를 저장하지 못했어요. 다시 시도해 주세요.");
+    } finally {
+      setIsSaving(false);
+    }
+  };
+
   if (!storedResult) {
     return (
       <div className={styles.page}>
@@ -87,7 +132,9 @@ export default function ResultPage() {
 
   return (
     <div className={styles.page}>
-      <main className={styles.main}>
+      <main
+        className={`${styles.main} ${THEME_CLASSES[storedResult.style] ?? ""}`}
+      >
         <Header />
 
         <section className={styles.resultIntro}>
@@ -99,7 +146,7 @@ export default function ResultPage() {
           </p>
         </section>
 
-        <article className={styles.resultCard}>
+        <article className={styles.resultCard} ref={resultCardRef}>
           <header className={styles.cardHeader}>
             <span className={styles.styleBadge}>
               {STYLE_LABELS[storedResult.style]}
@@ -109,7 +156,7 @@ export default function ResultPage() {
 
           <div className={styles.cardBody}>
             <span className={styles.decorativeMark} aria-hidden="true">
-              ✦
+              {THEME_MARKS[storedResult.style]}
             </span>
             <h1>{storedResult.result.title}</h1>
             <p>{storedResult.result.body}</p>
@@ -127,6 +174,21 @@ export default function ResultPage() {
           </dl>
         </article>
 
+        <button
+          className={styles.saveButton}
+          type="button"
+          onClick={handleSaveImage}
+          disabled={isSaving}
+        >
+          <span aria-hidden="true">↓</span>
+          {isSaving ? "이미지 만드는 중..." : "이미지로 저장하기"}
+        </button>
+        {saveError && (
+          <p className={styles.saveError} role="alert">
+            {saveError}
+          </p>
+        )}
+
         <div className={styles.actions}>
           <Link className={styles.primaryButton} href="/create">
             새로운 하루 과장하기
@@ -136,6 +198,39 @@ export default function ResultPage() {
             처음 화면으로
           </Link>
         </div>
+
+        <section className={styles.share} aria-labelledby="result-share-title">
+          <h2 id="result-share-title">공유하기</h2>
+          <div className={styles.shareButtons}>
+            <button
+              className={styles.kakaoButton}
+              type="button"
+              aria-label="카카오톡으로 공유하기"
+            >
+              <span className={styles.kakaoIcon} aria-hidden="true">
+                TALK
+              </span>
+            </button>
+            <button
+              className={styles.xButton}
+              type="button"
+              aria-label="X로 공유하기"
+            >
+              <span className={styles.xIcon} aria-hidden="true">
+                𝕏
+              </span>
+            </button>
+            <button
+              className={styles.linkButton}
+              type="button"
+              aria-label="링크 복사하기"
+            >
+              <span className={styles.linkIcon} aria-hidden="true">
+                ↗
+              </span>
+            </button>
+          </div>
+        </section>
       </main>
     </div>
   );
