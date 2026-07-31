@@ -1,0 +1,244 @@
+.page {
+  display: flex;
+  justify-content: center;
+  min-height: 100dvh;
+  color: #252323;
+  background: #faf8f7;
+}
+
+.main {
+  width: 100%;
+  max-width: 500px;
+  min-height: 100dvh;
+  padding: 0 24px 40px;
+  background: #fff;
+  border-inline: 1px solid #f0ebe9;
+}
+
+.resultIntro {
+  padding: 52px 0 28px;
+  text-align: center;
+}
+
+.completeBadge {
+  display: inline-flex;
+  padding: 8px 13px;
+  border-radius: 999px;
+  color: var(--color-primary-dark);
+  background: var(--color-primary-light);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.resultIntro p {
+  margin-top: 18px;
+  color: #4b4542;
+  font-size: 18px;
+  font-weight: 650;
+  line-height: 1.6;
+  letter-spacing: -0.035em;
+  word-break: keep-all;
+}
+
+.resultCard {
+  overflow: hidden;
+  border: 1px solid var(--color-primary-border);
+  border-radius: 24px;
+  background: #fff;
+  box-shadow: 0 16px 42px rgb(96 55 28 / 11%);
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 18px;
+  border-bottom: 1px solid #f5dfd0;
+  background: var(--color-primary-light);
+}
+
+.styleBadge {
+  padding: 6px 10px;
+  border-radius: 999px;
+  color: #fff;
+  background: var(--color-primary);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.owner {
+  color: #776a64;
+  font-size: 12px;
+  font-weight: 650;
+}
+
+.cardBody {
+  position: relative;
+  padding: 40px 24px 36px;
+  text-align: center;
+}
+
+.decorativeMark {
+  display: inline-grid;
+  width: 42px;
+  height: 42px;
+  place-items: center;
+  border-radius: 14px;
+  color: #fff;
+  background: var(--color-primary);
+  box-shadow: 0 8px 18px rgb(255 138 61 / 24%);
+  font-size: 19px;
+  transform: rotate(-6deg);
+}
+
+.cardBody h1 {
+  margin-top: 24px;
+  font-size: clamp(27px, 7vw, 36px);
+  line-height: 1.3;
+  letter-spacing: -0.055em;
+  word-break: keep-all;
+}
+
+.cardBody p {
+  margin-top: 22px;
+  color: #514b48;
+  font-size: 16px;
+  line-height: 1.85;
+  letter-spacing: -0.02em;
+  word-break: keep-all;
+}
+
+.resultDetails {
+  display: grid;
+  gap: 12px;
+  padding: 0 18px 18px;
+}
+
+.resultDetails div {
+  padding: 18px;
+  border-radius: 16px;
+  background: #faf8f7;
+}
+
+.resultDetails dt {
+  color: var(--color-primary-dark);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.resultDetails dd {
+  margin-top: 8px;
+  color: #302c2a;
+  font-size: 16px;
+  font-weight: 750;
+  line-height: 1.5;
+  letter-spacing: -0.025em;
+  word-break: keep-all;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  margin-top: 24px;
+}
+
+.primaryButton {
+  display: flex;
+  min-height: 58px;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border-radius: 14px;
+  color: #fff;
+  background: var(--color-primary);
+  font-size: 17px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  text-decoration: none;
+  transition:
+    background-color 160ms ease,
+    transform 160ms ease;
+}
+
+.primaryButton:hover {
+  background: var(--color-primary-dark);
+}
+
+.primaryButton:active {
+  transform: translateY(1px);
+}
+
+.primaryButton:focus-visible,
+.homeLink:focus-visible {
+  outline: 3px solid #252323;
+  outline-offset: 3px;
+}
+
+.homeLink {
+  align-self: center;
+  margin-top: 18px;
+  color: #706b69;
+  font-size: 14px;
+  font-weight: 650;
+  text-underline-offset: 4px;
+}
+
+.stateMessage {
+  display: flex;
+  min-height: calc(100dvh - 84px);
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 0;
+  text-align: center;
+}
+
+.stateIcon {
+  display: grid;
+  width: 54px;
+  height: 54px;
+  place-items: center;
+  border-radius: 18px;
+  color: #fff;
+  background: var(--color-primary);
+  font-size: 24px;
+  font-weight: 800;
+}
+
+.stateMessage h1 {
+  margin-top: 22px;
+  font-size: 25px;
+  letter-spacing: -0.04em;
+}
+
+.stateMessage p {
+  margin-top: 10px;
+  color: #706b69;
+  line-height: 1.6;
+}
+
+.stateMessage .primaryButton {
+  width: 100%;
+  margin-top: 30px;
+}
+
+@media (max-width: 380px) {
+  .main {
+    padding-inline: 18px;
+  }
+
+  .cardBody {
+    padding-inline: 19px;
+  }
+
+  .resultIntro p {
+    font-size: 17px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .primaryButton {
+    transition: none;
+  }
+}
