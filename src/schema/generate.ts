@@ -23,10 +23,10 @@ export const GenerateRequestSchema = z.object({
 export type GenerateRequest = z.infer<typeof GenerateRequestSchema>;
 
 export const GeneratedResultSchema = z.object({
-  title: z.string(),
-  body: z.string(),
-  todayTitle: z.string(),
-  oneLineReview: z.string(),
+  title: z.string().trim().min(1).max(80),
+  body: z.string().trim().min(1).max(500),
+  todayTitle: z.string().trim().min(1).max(40),
+  oneLineReview: z.string().trim().min(1).max(120),
 });
 
 export type GeneratedResult = z.infer<typeof GeneratedResultSchema>;

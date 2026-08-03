@@ -1,0 +1,72 @@
+.footer {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  color: #716a67;
+  background: #f7f4f2;
+  border-top: 1px solid #ece5e1;
+  border-inline: 1px solid #f0ebe9;
+}
+
+.inner {
+  width: 100%;
+  padding: 32px 24px 38px;
+}
+
+.brand {
+  color: #36312f;
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  text-decoration: none;
+}
+
+.description {
+  max-width: 320px;
+  margin-top: 10px;
+  font-size: 13px;
+  line-height: 1.65;
+  letter-spacing: -0.02em;
+  word-break: keep-all;
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+  margin-top: 24px;
+}
+
+.links a {
+  color: #4c4643;
+  font-size: 13px;
+  font-weight: 750;
+  text-decoration: none;
+}
+
+.links a:hover {
+  color: var(--color-primary-dark);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.links a:focus-visible,
+.brand:focus-visible {
+  border-radius: 4px;
+  outline: 3px solid var(--color-primary-border);
+  outline-offset: 3px;
+}
+
+.projectNotice {
+  margin-top: 25px;
+  padding-top: 20px;
+  border-top: 1px solid #e5ddda;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.copyright {
+  margin-top: 6px;
+  color: #9b9490;
+  font-size: 11px;
+}

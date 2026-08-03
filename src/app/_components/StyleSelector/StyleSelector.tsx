@@ -41,6 +41,7 @@ type StyleSelectorProps = {
   onSelect: (style: ExaggerationStyle) => void;
   onBack: () => void;
   onComplete: () => void;
+  isGenerating: boolean;
 };
 
 export default function StyleSelector({
@@ -48,6 +49,7 @@ export default function StyleSelector({
   onSelect,
   onBack,
   onComplete,
+  isGenerating,
 }: StyleSelectorProps) {
   return (
     <section className={styles.styleStep}>
@@ -103,11 +105,11 @@ export default function StyleSelector({
       <button
         className={styles.submitButton}
         type="button"
-        disabled={!selectedStyle}
+        disabled={!selectedStyle || isGenerating}
         onClick={onComplete}
       >
-        내 하루 과장하기
-        <span aria-hidden="true">→</span>
+        {isGenerating ? "거창하게 만드는 중..." : "내 하루 과장하기"}
+        {!isGenerating && <span aria-hidden="true">→</span>}
       </button>
     </section>
   );

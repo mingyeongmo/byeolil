@@ -19,3 +19,16 @@
   padding: 0px 24px 36px;
   background-color: var(--foreground);
 }
+
+.generateError {
+  margin-top: 14px;
+  padding: 12px 14px;
+  border: 1px solid #f0b8b3;
+  border-radius: 10px;
+  color: #b23b32;
+  background: #fff3f1;
+  font-size: 13px;
+  font-weight: 650;
+  line-height: 1.5;
+  text-align: center;
+}

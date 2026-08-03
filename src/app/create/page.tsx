@@ -18,6 +18,8 @@ export default function CreatePage() {
   const [selectedStyle, setSelectedStyle] = useState<ExaggerationStyle | null>(
     null,
   );
+  const [isGenerating, setIsGenerating] = useState(false);
+  const [generateError, setGenerateError] = useState("");
 
   const handleActivityFormComplete = (
     trimmedName: string,
@@ -29,40 +31,49 @@ export default function CreatePage() {
   };
 
   const handleGenerate = async () => {
-    if (!selectedStyle) {
+    if (!selectedStyle || isGenerating) {
       return;
     }
 
-    const response = await fetch("/api/generate", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        name,
-        activities,
-        style: selectedStyle,
-      }),
-    });
+    setIsGenerating(true);
+    setGenerateError("");
 
-    const data = await response.json();
+    try {
+      const response = await fetch("/api/generate", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name,
+          activities,
+          style: selectedStyle,
+        }),
+      });
 
-    if (!response.ok) {
-      console.error(data.message);
-      return;
+      const data = await response.json();
+
+      if (!response.ok) {
+        setGenerateError(data.message ?? "결과 생성에 실패했습니다.");
+        return;
+      }
+
+      sessionStorage.setItem(
+        "byeolil-result",
+        JSON.stringify({
+          name,
+          activities,
+          style: selectedStyle,
+          result: data.result,
+        }),
+      );
+
+      router.push("/result");
+    } catch {
+      setGenerateError("서버에 연결하지 못했습니다. 다시 시도해 주세요.");
+    } finally {
+      setIsGenerating(false);
     }
-
-    sessionStorage.setItem(
-      "byeolil-result",
-      JSON.stringify({
-        name,
-        activities,
-        style: selectedStyle,
-        result: data.result,
-      }),
-    );
-
-    router.push("/result");
   };
 
   return (
@@ -85,7 +96,14 @@ export default function CreatePage() {
             onSelect={setSelectedStyle}
             onBack={() => setCurrentStep("input")}
             onComplete={handleGenerate}
+            isGenerating={isGenerating}
           />
+        )}
+
+        {generateError && (
+          <p className={styles.generateError} role="alert">
+            {generateError}
+          </p>
         )}
       </main>
     </div>
