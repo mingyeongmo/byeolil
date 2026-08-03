@@ -1,7 +1,6 @@
 .page {
   --text: #252323;
   --muted: #706b69;
-  --line: #e8e2df;
 
   display: flex;
   justify-content: center;
@@ -17,27 +16,12 @@
   background: #fff;
 }
 
-.brandMark {
-  color: var(--color-primary);
-  font-size: 26px;
-  line-height: 1;
-}
-
 .hero {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 48px;
   text-align: center;
-}
-
-.badge {
-  padding: 8px 14px;
-  border-radius: 999px;
-  color: var(--color-primary-dark);
-  background: var(--color-primary-light);
-  font-size: 14px;
-  font-weight: 700;
 }
 
 .hero h1 {
@@ -81,86 +65,6 @@
   color: #4c4644;
   font-size: 14px;
   font-weight: 650;
-}
-
-.preview {
-  margin-top: 52px;
-}
-
-.preview > h2 {
-  color: var(--color-primary-dark);
-  font-size: 19px;
-  letter-spacing: -0.03em;
-}
-
-.resultCard {
-  margin-top: 16px;
-  padding: 22px 20px;
-  border: 1px solid var(--line);
-  border-radius: 18px;
-  background: #fff;
-  box-shadow: 0 8px 24px rgb(68 45 40 / 7%);
-}
-
-.resultMeta {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  color: var(--muted);
-  font-size: 12px;
-}
-
-.styleBadge {
-  padding: 5px 9px;
-  border: 1px solid var(--color-primary);
-  border-radius: 999px;
-  color: var(--color-primary-dark);
-  font-weight: 700;
-}
-
-.resultCard h3 {
-  margin-top: 16px;
-  font-size: 21px;
-  line-height: 1.4;
-  letter-spacing: -0.04em;
-  word-break: keep-all;
-}
-
-.resultCard > p {
-  margin-top: 14px;
-  color: #4e4947;
-  font-size: 14px;
-  line-height: 1.7;
-}
-
-.resultDetails {
-  display: grid;
-  grid-template-columns: 0.85fr 1.15fr;
-  margin-top: 18px;
-  padding-top: 18px;
-  border-top: 1px solid var(--line);
-}
-
-.resultDetails div {
-  min-width: 0;
-}
-
-.resultDetails div + div {
-  padding-left: 16px;
-  border-left: 1px solid var(--line);
-}
-
-.resultDetails dt {
-  color: var(--muted);
-  font-size: 12px;
-}
-
-.resultDetails dd {
-  margin-top: 7px;
-  font-size: 15px;
-  font-weight: 750;
-  line-height: 1.4;
-  letter-spacing: -0.025em;
 }
 
 .startButton {
@@ -213,12 +117,6 @@
 .share h2 {
   font-size: 17px;
   letter-spacing: -0.03em;
-}
-
-.share > p {
-  margin-top: 7px;
-  color: var(--muted);
-  font-size: 13px;
 }
 
 .shareButtons {
