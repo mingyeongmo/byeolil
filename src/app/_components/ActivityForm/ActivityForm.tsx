@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent, useState } from "react";
+import { isMeaningfulActivity } from "@/lib/activityValidation";
 import styles from "./ActivityForm.module.scss";
 
 const MIN_ACTIVITIES = 3;
@@ -87,9 +88,17 @@ export default function ActivityForm({
     const trimmedActivities = activities.map((activity) => activity.trim());
     const nextErrors: FormErrors = {
       name: trimmedName ? "" : "이름을 입력해 주세요.",
-      activities: trimmedActivities.map((activity) =>
-        activity ? "" : "오늘 있었던 일을 입력해 주세요.",
-      ),
+      activities: trimmedActivities.map((activity) => {
+        if (!activity) {
+          return "오늘 있었던 일을 입력해 주세요.";
+        }
+
+        if (!isMeaningfulActivity(activity)) {
+          return "오늘 한 일을 조금 더 구체적으로 입력해 주세요.";
+        }
+
+        return "";
+      }),
     };
     const hasError =
       Boolean(nextErrors.name) ||

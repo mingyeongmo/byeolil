@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { isMeaningfulActivity } from "@/lib/activityValidation";
 
 export const GenerateRequestSchema = z.object({
   name: z
@@ -13,7 +14,11 @@ export const GenerateRequestSchema = z.object({
         .string()
         .trim()
         .min(1, "오늘 있었던 일을 입력해야 합니다.")
-        .max(50, "오늘 있었던 일은 50자 이하여야 합니다."),
+        .max(50, "오늘 있었던 일은 50자 이하여야 합니다.")
+        .refine(
+          isMeaningfulActivity,
+          "오늘 한 일을 조금 더 구체적으로 입력해 주세요.",
+        ),
     )
     .min(3, "오늘 있었던 일을 3개 이상 입력해야 합니다."),
 
