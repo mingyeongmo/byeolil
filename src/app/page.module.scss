@@ -1,11 +1,10 @@
 .page {
-  --text: #252323;
   --muted: #706b69;
 
   display: flex;
   justify-content: center;
   min-height: 100dvh;
-  color: var(--text);
+  color: var(--color-text);
 }
 
 .main {
