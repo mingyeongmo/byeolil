@@ -3,9 +3,19 @@ import { zodTextFormat } from "openai/helpers/zod";
 import { createGenerationPrompt } from "@/lib/generatePrompt";
 import { MOCK_RESULTS } from "@/mocks/generatedResults";
 import {
+  type GeneratedResult,
   GeneratedResultSchema,
   GenerateRequestSchema,
 } from "@/schema/generate";
+
+const ALLOWED_RESULT_CHARACTERS =
+  /^[\p{Script=Hangul}\p{Script=Latin}\p{Number}\p{Punctuation}\p{Symbol}\p{Mark}\s\u200D]+$/u;
+
+function containsOnlyAllowedCharacters(result: GeneratedResult) {
+  return Object.values(result).every((value) =>
+    ALLOWED_RESULT_CHARACTERS.test(value),
+  );
+}
 
 export async function POST(request: Request) {
   let data: unknown;
@@ -91,6 +101,21 @@ export async function POST(request: Request) {
         {
           success: false,
           message: "AI 결과를 완성하지 못했습니다. 다시 시도해 주세요.",
+        },
+        {
+          status: 502,
+        },
+      );
+    }
+
+    if (!containsOnlyAllowedCharacters(response.output_parsed)) {
+      console.warn("AI 결과에 허용되지 않은 문자가 포함되었습니다.");
+
+      return Response.json(
+        {
+          success: false,
+          message:
+            "결과에 지원하지 않는 문자가 포함되었습니다. 다시 시도해 주세요.",
         },
         {
           status: 502,
