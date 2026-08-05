@@ -36,7 +36,6 @@ const EXAGGERATION_STYLES = [
 export type ExaggerationStyle = (typeof EXAGGERATION_STYLES)[number]["id"];
 
 type StyleSelectorProps = {
-  name: string;
   selectedStyle: ExaggerationStyle | null;
   onSelect: (style: ExaggerationStyle) => void;
   onBack: () => void;

@@ -91,7 +91,6 @@ export default function CreatePage() {
           />
         ) : (
           <StyleSelector
-            name={name}
             selectedStyle={selectedStyle}
             onSelect={setSelectedStyle}
             onBack={() => setCurrentStep("input")}
