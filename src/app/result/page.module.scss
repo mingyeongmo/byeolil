@@ -198,8 +198,7 @@
   cursor: wait;
 }
 
-.saveButton:focus-visible,
-.shareButtons button:focus-visible {
+.saveButton:focus-visible {
   outline: 3px solid #252323;
   outline-offset: 3px;
 }
@@ -263,54 +262,6 @@
   letter-spacing: -0.03em;
 }
 
-.shareButtons {
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-  margin-top: 18px;
-}
-
-.shareButtons button {
-  display: grid;
-  width: 48px;
-  height: 48px;
-  place-items: center;
-  border: 0;
-  border-radius: 50%;
-  cursor: pointer;
-}
-
-.shareButtons span {
-  font-weight: 850;
-}
-
-.kakaoIcon {
-  color: #3c1e1e;
-  font-size: 9px;
-}
-
-.kakaoButton {
-  background: #fee500;
-}
-
-.xIcon {
-  color: #fff;
-  font-size: 20px;
-}
-
-.xButton {
-  background: #111;
-}
-
-.linkIcon {
-  color: #fff;
-  font-size: 21px;
-  transform: rotate(-45deg);
-}
-
-.linkButton {
-  background: #777;
-}
 .stateMessage {
   display: flex;
   min-height: calc(100dvh - 84px);

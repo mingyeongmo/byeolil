@@ -5,6 +5,7 @@ import { useRef, useState, useSyncExternalStore } from "react";
 import { toPng } from "html-to-image";
 import { StoredResultSchema, type StoredResult } from "@/schema/generate";
 import Header from "../_components/Header/Header";
+import ShareButtons from "../_components/ShareButtons/ShareButtons";
 import styles from "./page.module.scss";
 
 const STYLE_LABELS: Record<StoredResult["style"], string> = {
@@ -201,35 +202,7 @@ export default function ResultPage() {
 
         <section className={styles.share} aria-labelledby="result-share-title">
           <h2 id="result-share-title">공유하기</h2>
-          <div className={styles.shareButtons}>
-            <button
-              className={styles.kakaoButton}
-              type="button"
-              aria-label="카카오톡으로 공유하기"
-            >
-              <span className={styles.kakaoIcon} aria-hidden="true">
-                TALK
-              </span>
-            </button>
-            <button
-              className={styles.xButton}
-              type="button"
-              aria-label="X로 공유하기"
-            >
-              <span className={styles.xIcon} aria-hidden="true">
-                𝕏
-              </span>
-            </button>
-            <button
-              className={styles.linkButton}
-              type="button"
-              aria-label="링크 복사하기"
-            >
-              <span className={styles.linkIcon} aria-hidden="true">
-                ↗
-              </span>
-            </button>
-          </div>
+          <ShareButtons />
         </section>
       </main>
     </div>
