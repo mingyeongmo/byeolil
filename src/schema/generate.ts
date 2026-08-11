@@ -41,3 +41,11 @@ export const StoredResultSchema = GenerateRequestSchema.extend({
 });
 
 export type StoredResult = z.infer<typeof StoredResultSchema>;
+
+export const SharedResultSchema = StoredResultSchema.pick({
+  name: true,
+  style: true,
+  result: true,
+});
+
+export type SharedResult = z.infer<typeof SharedResultSchema>;

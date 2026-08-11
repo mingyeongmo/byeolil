@@ -79,5 +79,5 @@ export default function ResultPage() {
     );
   }
 
-  return <ResultView storedResult={storedResult} />;
+  return <ResultView sharedResult={storedResult} />;
 }
