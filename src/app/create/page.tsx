@@ -58,17 +58,12 @@ export default function CreatePage() {
         return;
       }
 
-      sessionStorage.setItem(
-        "byeolil-result",
-        JSON.stringify({
-          name,
-          activities,
-          style: selectedStyle,
-          result: data.result,
-        }),
-      );
+      if (typeof data.id !== "string") {
+        setGenerateError("결과 주소를 만들지 못했습니다.");
+        return;
+      }
 
-      router.push("/result");
+      router.push(`/result/${data.id}`);
     } catch {
       setGenerateError("서버에 연결하지 못했습니다. 다시 시도해 주세요.");
     } finally {
