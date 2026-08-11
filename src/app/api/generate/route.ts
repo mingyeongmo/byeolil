@@ -1,4 +1,5 @@
 import OpenAI from "openai";
+import { saveSharedResult } from "@/lib/sharedResults";
 import { zodTextFormat } from "openai/helpers/zod";
 import { createGenerationPrompt } from "@/lib/generatePrompt";
 import { MOCK_RESULTS } from "@/mocks/generatedResults";
@@ -52,10 +53,36 @@ export async function POST(request: Request) {
   const useMockResults = process.env.USE_MOCK_RESULTS === "true";
 
   if (useMockResults) {
-    return Response.json({
-      success: true,
-      result: MOCK_RESULTS[parsedData.data.style],
-    });
+    const result = MOCK_RESULTS[parsedData.data.style];
+
+    try {
+      const id = await saveSharedResult({
+        name: parsedData.data.name,
+        style: parsedData.data.style,
+        result,
+      });
+
+      return Response.json({
+        success: true,
+        id,
+        result,
+      });
+    } catch (error) {
+      console.error(
+        "Mock result storage failed:",
+        error instanceof Error ? error.message : "Unknown error",
+      );
+
+      return Response.json(
+        {
+          success: false,
+          message: "결과를 저장하지 못했습니다. 다시 시도해 주세요.",
+        },
+        {
+          status: 500,
+        },
+      );
+    }
   }
 
   const apiKey = process.env.OPENAI_API_KEY;
