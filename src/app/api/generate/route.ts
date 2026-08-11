@@ -150,13 +150,20 @@ export async function POST(request: Request) {
       );
     }
 
+    const id = await saveSharedResult({
+      name: parsedData.data.name,
+      style: parsedData.data.style,
+      result: response.output_parsed,
+    });
+
     return Response.json({
       success: true,
+      id,
       result: response.output_parsed,
     });
   } catch (error) {
     console.error(
-      "OpenAI generation failed:",
+      "결과 생성 또는 저장 실패:",
       error instanceof Error ? error.message : "Unknown error",
     );
 
