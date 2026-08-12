@@ -49,3 +49,39 @@
   object-fit: contain;
   filter: brightness(0) invert(1);
 }
+
+.copyToast {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: 1000;
+  margin: 0;
+  padding: 12px 18px;
+  border-radius: 999px;
+  background: rgb(20 20 20 / 88%);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  white-space: nowrap;
+  box-shadow: 0 8px 24px rgb(0 0 0 / 20%);
+  pointer-events: none;
+  animation: copy-toast 2s ease both;
+}
+
+@keyframes copy-toast {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, calc(-50% + 8px));
+  }
+
+  10%,
+  85% {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(-50%, calc(-50% - 8px));
+  }
+}
