@@ -11,6 +11,30 @@ type ShareButtonProps = {
 export default function ShareButtons({ text }: ShareButtonProps) {
   const [copyStatus, setCopyStatus] = useState("");
 
+  const handleShareToKakao = () => {
+    const kakao = window.Kakao;
+    const javascriptKey = process.env.NEXT_PUBLIC_KAKAO_JAVASCRIPT_KEY;
+
+    if (!kakao || !javascriptKey) {
+      return;
+    }
+
+    if (!kakao.isInitialized()) {
+      kakao.init(javascriptKey);
+    }
+
+    const url = window.location.href;
+
+    kakao.Share.sendDefault({
+      objectType: "text",
+      text,
+      link: {
+        webUrl: url,
+        mobileWebUrl: url,
+      },
+    });
+  };
+
   const handleShareToX = () => {
     const url = window.location.href;
     const shareText = `${text}\n\n${url}`;
@@ -42,6 +66,7 @@ export default function ShareButtons({ text }: ShareButtonProps) {
             className={styles.shareButton}
             type="button"
             aria-label="카카오톡으로 공유하기"
+            onClick={handleShareToKakao}
           >
             <Image
               src="/icons/kakao.png"

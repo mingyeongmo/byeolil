@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Geist, Geist_Mono } from "next/font/google";
 import Footer from "./_components/Footer/Footer";
 import "./globals.scss";
@@ -27,6 +28,10 @@ export default function RootLayout({
   return (
     <html lang="ko" className={`${geistSans.variable} ${geistMono.variable}`}>
       <body>
+        <Script
+          src="https://t1.kakaocdn.net/kakao_js_sdk/2.8.1/kakao.min.js"
+          strategy="beforeInteractive"
+        />
         {children}
         <Footer />
       </body>
