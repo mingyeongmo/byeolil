@@ -48,7 +48,7 @@ export default function Home() {
         <section className={styles.share} aria-labelledby="share-title">
           <h2 id="share-title">공유하기</h2>
 
-          <ShareButtons />
+          <ShareButtons text="평범한 하루를 거창하게 만들어보세요 ✨ #별일있음" />
         </section>
       </main>
     </div>

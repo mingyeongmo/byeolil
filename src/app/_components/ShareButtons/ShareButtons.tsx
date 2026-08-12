@@ -4,8 +4,23 @@ import { useState } from "react";
 import Image from "next/image";
 import styles from "./ShareButtons.module.scss";
 
-export default function ShareButtons() {
+type ShareButtonProps = {
+  text: string;
+};
+
+export default function ShareButtons({ text }: ShareButtonProps) {
   const [copyStatus, setCopyStatus] = useState("");
+
+  const handleShareToX = () => {
+    const url = window.location.href;
+
+    const shareUrl =
+      `https://x.com/intent/post` +
+      `?text=${encodeURIComponent(text)}` +
+      `&url=${encodeURIComponent(url)}`;
+
+    window.open(shareUrl, "_blank", "noopener,noreferrer");
+  };
 
   const handleCopyLink = async () => {
     try {
@@ -43,6 +58,7 @@ export default function ShareButtons() {
             className={`${styles.shareButton} ${styles.xButton}`}
             type="button"
             aria-label="X로 공유하기"
+            onClick={handleShareToX}
           >
             <Image
               className={styles.xIcon}
