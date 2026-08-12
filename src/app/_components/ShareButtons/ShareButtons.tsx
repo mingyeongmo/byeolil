@@ -13,11 +13,10 @@ export default function ShareButtons({ text }: ShareButtonProps) {
 
   const handleShareToX = () => {
     const url = window.location.href;
+    const shareText = `${text}\n\n${url}`;
 
     const shareUrl =
-      `https://x.com/intent/post` +
-      `?text=${encodeURIComponent(text)}` +
-      `&url=${encodeURIComponent(url)}`;
+      `https://x.com/intent/post` + `?text=${encodeURIComponent(shareText)}`;
 
     window.open(shareUrl, "_blank", "noopener,noreferrer");
   };

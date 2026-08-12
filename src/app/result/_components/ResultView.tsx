@@ -135,7 +135,7 @@ export default function ResultView({ sharedResult }: ResultViewProps) {
 
         <section className={styles.share} aria-labelledby="result-share-title">
           <h2 id="result-share-title">공유하기</h2>
-          <ShareButtons text="평범했던 내 하루가 제법 거창해졌어요 ✨ #별일있음" />
+          <ShareButtons text="평범했던 내 하루가 제법 거창해졌어요 ✨" />
         </section>
       </main>
     </div>
