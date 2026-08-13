@@ -23,15 +23,8 @@ export default function ShareButtons({ text }: ShareButtonProps) {
       kakao.init(javascriptKey);
     }
 
-    const url = window.location.href;
-
-    kakao.Share.sendDefault({
-      objectType: "text",
-      text,
-      link: {
-        webUrl: url,
-        mobileWebUrl: url,
-      },
+    kakao.Share.sendScrap({
+      requestUrl: window.location.href,
     });
   };
 

@@ -1,10 +1,5 @@
-type KakaoTextShareSettings = {
-  objectType: "text";
-  text: string;
-  link: {
-    webUrl: string;
-    mobileWebUrl: string;
-  };
+type KakaoScrapShareSettings = {
+  requestUrl: string;
 };
 
 interface Window {
@@ -12,7 +7,7 @@ interface Window {
     init: (javascriptKey: string) => void;
     isInitialized: () => boolean;
     Share: {
-      sendDefault: (settings: KakaoTextShareSettings) => void;
+      sendScrap: (settings: KakaoScrapShareSettings) => void;
     };
   };
 }
