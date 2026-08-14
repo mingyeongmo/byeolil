@@ -28,6 +28,11 @@ export default function CreatePage() {
     setName(trimmedName);
     setActivities(trimmedActivities);
     setCurrentStep("style");
+
+    window.scrollTo({
+      top: 0,
+      behavior: "instant",
+    });
   };
 
   const handleGenerate = async () => {
