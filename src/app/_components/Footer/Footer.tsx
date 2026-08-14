@@ -17,9 +17,7 @@ export default function Footer() {
           <Link href="/privacy">개인정보처리방침</Link>
         </nav>
 
-        <p className={styles.projectNotice}>
-          포트폴리오 목적으로 개발 중인 서비스입니다.
-        </p>
+        <p className={styles.projectNotice}>&nbsp;</p>
         <p className={styles.copyright}>
           © {new Date().getFullYear()} 별일있음
         </p>
