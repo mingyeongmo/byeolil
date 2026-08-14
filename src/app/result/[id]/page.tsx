@@ -32,7 +32,7 @@ export async function generateMetadata({
       description,
       type: "article",
       url: `/result/${id}`,
-      images: ["/opengraph-image.png"],
+      // images: ["/opengraph-image.png"],
     },
     twitter: {
       card: "summary_large_image",
