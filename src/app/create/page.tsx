@@ -56,6 +56,13 @@ export default function CreatePage() {
         }),
       });
 
+      if (response.status === 429) {
+        setGenerateError(
+          "짧은 시간에 너무 많이 요청했어요. 잠시 후 다시 시도해 주세요.",
+        );
+        return;
+      }
+
       const data = await response.json();
 
       if (!response.ok) {
