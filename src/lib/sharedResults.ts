@@ -88,3 +88,13 @@ export async function getSharedResult(
     },
   };
 }
+
+export async function deleteExpiredSharedResults(): Promise<number> {
+  const deletedRows = await sql`
+    delete from public.shared_results
+    where created_at < now() - interval '7 days'
+    returning id
+  `;
+
+  return deletedRows.length;
+}
