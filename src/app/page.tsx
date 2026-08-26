@@ -1,8 +1,15 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import Header from "./_components/Header/Header";
 import ShareButtons from "./_components/ShareButtons/ShareButtons";
 import styles from "./page.module.scss";
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: "/",
+  },
+};
 
 export default function Home() {
   return (
