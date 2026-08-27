@@ -18,9 +18,9 @@ const siteUrl = process.env.SITE_URL ?? "http://localhost:3000";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: "별일있음",
+  title: "별일있음 | 평범한 하루를 거창하게",
   description:
-    "평범한 하루를 쓸데없이 거창하고 웃기게 만들어주는 AI 과장 생성 웹서비스",
+    "오늘 있었던 일을 뉴스, 전설, 스포츠 중계 스타일로 쓸데없이 거창하고 웃기게 만들어보세요.",
   openGraph: {
     title: "별일있음",
     description: "별일 없던 하루도 주인공이 될 수 있으니까",
