@@ -1,0 +1,26 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 512 512"
+  role="img"
+  aria-labelledby="title"
+>
+  <title id="title">별일있음</title>
+  <rect
+    x="16"
+    y="16"
+    width="480"
+    height="480"
+    rx="112"
+    fill="#ffffff"
+  />
+  <path
+    d="M166 292H251L283 399C289 418 279 431 263 436L226 448C208 454 198 444 193 427L158 310Z"
+    fill="#ff8a3d"
+  />
+  <path
+    d="M168 201L349 134C366 128 382 140 382 158V354C382 372 366 384 349 378L168 311Z"
+    fill="#ff8a3d"
+  />
+  <rect x="145" y="194" width="62" height="125" rx="31" fill="#e96f25" />
+  <rect x="82" y="210" width="101" height="94" rx="31" fill="#ff8a3d" />
+</svg>
