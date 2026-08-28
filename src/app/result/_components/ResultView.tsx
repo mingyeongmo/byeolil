@@ -10,7 +10,7 @@ import styles from "../page.module.scss";
 
 const STYLE_LABELS: Record<SharedResult["style"], string> = {
   legend: "전설",
-  "breaking-news": "긴급 뉴스",
+  "breaking-news": "별일 뉴스",
   sports: "스포츠 중계",
   achievement: "업적 달성",
 };
